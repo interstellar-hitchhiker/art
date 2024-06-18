@@ -1,1 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstract Art Generator</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        canvas {
+            border: 1px solid black;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <button id="generateBtn">Generate Abstract Art</button>
+
+    <script>
+        document.getElementById('generateBtn').addEventListener('click', generateImage);
+
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function getRandomHexColor() {
+            return '#' + Math.floor(Math.random() * 16777215).toString(16);
+        }
+
+        function generateRandomGradient(ctx, width, height) {
+            const gradient = ctx.createLinearGradient(0, 0, width, height);
+            gradient.addColorStop(0, getRandomHexColor());
+            gradient.addColorStop(1, getRandomHexColor());
+            return gradient;
+        }
+
+        function generateImage() {
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Generate random background gradient
+            ctx.fillStyle = generateRandomGradient(ctx, canvas.width, canvas.height);
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Generate random abstract shapes
+            for (let i = 0; i < 20; i++) {
+                ctx.fillStyle = getRandomHexColor();
+                ctx.beginPath();
+                ctx.moveTo(getRandomInt(0, canvas.width), getRandomInt(0, canvas.height));
+                for (let j = 0; j < 5; j++) {
+                    ctx.lineTo(getRandomInt(0, canvas.width), getRandomInt(0, canvas.height));
+                }
+                ctx.closePath();
+                ctx.fill();
+            }
+
+            // Generate random circles
+            for (let i = 0; i < 10; i++) {
+                ctx.fillStyle = getRandomHexColor();
+                ctx.beginPath();
+                ctx.arc(getRandomInt(0, canvas.width), getRandomInt(0, canvas.height), getRandomInt(20, 100), 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            // Generate random lines
+            for (let i = 0; i < 15; i++) {
+                ctx.strokeStyle = getRandomHexColor();
+                ctx.lineWidth = getRandomInt(1, 5);
+                ctx.beginPath();
+                ctx.moveTo(getRandomInt(0, canvas.width), getRandomInt(0, canvas.height));
+                ctx.lineTo(getRandomInt(0, canvas.width), getRandomInt(0, canvas.height));
+                ctx.stroke();
+            }
+
+            downloadImage(canvas);
+        }
+
+        function downloadImage(canvas) {
+            const link = document.createElement('a');
+            const date = new Date().toISOString().split('T')[0];
+            link.download = `abstract_art_${date}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+    </script>
+</body>
+</html>
 
