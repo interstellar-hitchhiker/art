@@ -1,35 +1,29 @@
-# Art 
-https://interstellar-hitchhiker.github.io/art/
+# Art
 
-# Abstract Art Generator
+Live demo: [https://interstellar-hitchhiker.github.io/art/](https://interstellar-hitchhiker.github.io/art/)
 
-This project is a simple web-based tool for generating unique, abstract art pieces. Each generated image is a one-of-a-kind combination of shapes, colors, and patterns, allowing users to create and download their own abstract artwork.
+## Version 1
 
-## Features
+Version 1 was a very simple abstract art generator. It used an HTML canvas to create random gradients, shapes, circles, and lines. Clicking the button generated a new image and downloaded it automatically.
 
-- Generates random abstract art each time the "Generate Abstract Art" button is clicked.
-- Uses random colors, shapes, gradients, circles, and lines to create visually appealing images.
-- Allows users to download the generated artwork with a unique filename that includes the current date.
+It worked as a basic experiment, but it had no real direction, no style control, and no clear purpose beyond random visual output.
 
-## How It Works
+## Version 2
 
-1. **HTML Structure**: The HTML file includes a `<canvas>` element for drawing the artwork and a button to trigger the image generation.
+Version 2 turns the idea into a small generative art studio.
 
-2. **CSS Styling**: The CSS styles center the canvas and the button on the page and provide a background color.
+Instead of just throwing random shapes onto a canvas, the app now gives the user more control over the artwork. It includes seeded generation, different visual styles, palette options, composition controls, texture, symmetry, export sizes, title overlays, saved looks, and PNG download.
 
-3. **JavaScript Functions**:
-    - `getRandomInt(min, max)`: Generates a random integer between `min` and `max` inclusive.
-    - `getRandomHexColor()`: Generates a random hexadecimal color code.
-    - `generateRandomGradient(ctx, width, height)`: Creates a linear gradient with two random colors.
-    - `generateImage()`: Clears the canvas, fills it with a random gradient background, and draws random shapes, circles, and lines to create abstract art.
-    - `downloadImage(canvas)`: Converts the canvas content to a PNG file and triggers a download with a unique filename that includes the current date.
+The purpose is now clearer: to make usable abstract images for posters, wallpapers, covers, banners, avatars, moodboards, and visual experiments.
 
-## Usage
+## What changed
 
-1. Open the `index.html` file in a web browser.
-2. Click the "Generate Abstract Art" button to create a new abstract art piece.
-3. The generated image will be displayed on the canvas.
-4. The image can be downloaded by clicking on the canvas, and it will be saved with a unique filename including the current date.
+* From random output to controlled generative design.
+* From one button to a proper creative interface.
+* From automatic downloads to intentional export.
+* From simple shapes to named visual styles.
+* From disposable images to repeatable seeded artworks.
 
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+## Built with
+
+HTML, CSS, JavaScript, and Canvas in a single self-contained browser file.
