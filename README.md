@@ -1,7 +1,7 @@
 # Art
 
 ## Version 2
-Live demo: [https://interstellar-hitchhiker.github.io/art/](https://interstellar-hitchhiker.github.io/art/)
+Live demo: https://interstellar-hitchhiker.github.io/Seeded-Art/
 
 Version 2 turns the idea into a small generative art studio.
 
